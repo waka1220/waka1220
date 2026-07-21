@@ -1,3 +1,4 @@
+<!-- GitHub username: waka1220 -->
 <div align="right">
   <img src="https://komarev.com/ghpvc/?username=waka1220" />
 </div>
@@ -13,7 +14,7 @@
 - 🔬 **触覚ファントムセンセーション（PS）** を研究中 — 皮膚上の2点刺激により、その中間点に感覚が知覚される錯触覚
 - 🎯 目標：少ない振動子で全身の触覚を再現する最適解を見つけること
 - 🧠 電気工学（学部）→ 機械工学（修士）→ 情報科学（博士）と分野を横断してきました
-- 🛠️ 研究の傍ら、スタートアップ向けネットワーキングアプリ [**TomoMeet**](https://tomomeet.com/) をチーム開発中
+- 🛠️ 研究の傍ら、スタートアップ向けネットワーキングアプリ [**TomoMeet**](https://tomomeet.com/) をチームで開発中
 - 📫 連絡先：[waka12200203@gmail.com](mailto:waka12200203@gmail.com)
 
 <br>
@@ -25,7 +26,7 @@
 - 🔬 Researching **vibrotactile Phantom Sensation (PS)** — a haptic illusion that creates perceived sensation at an intermediate point on the skin
 - 🎯 Goal: finding the optimal solution for whole-body vibrotactile haptics using as few actuators as possible
 - 🧠 Background spans electrical engineering → mechanical engineering → information science
-- 🛠️ Building [**TomoMeet**](https://tomomeet.com/), a startup networking app, on the side
+- 🛠️ Building [**TomoMeet**](https://tomomeet.com/), a startup networking app, with a team
 - 📫 How to reach me: [waka12200203@gmail.com](mailto:waka12200203@gmail.com)
 
 <br>
@@ -39,9 +40,12 @@
 <!-- GitHub usernameを変更, 2箇所 -->
 <!-- ライトモード：theme=light, ダークモード：theme=vue-dark -->
 ## 🏃‍♀️ Activities
+- 🌱 研究とアートを掛け合わせたプロジェクト **NAIS(ar)T** を立ち上げました
+- 🎨 [Instagram](https://www.instagram.com/p/DX17nOikpIB/) でアーティスト活動もしています
+
 <div align="left">
-  <img alt="Top Langs" height="170px" src="https://github-readme-stats.vercel.app/api?username=your-username&theme=vue-dark&layout=compact" />
-  <img alt="github stats" height="170px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=your-username&theme=vue-dark&layout=compact" />
+  <img alt="Top Langs" height="170px" src="https://github-readme-stats.vercel.app/api?username=waka1220&theme=vue-dark&layout=compact" />
+  <img alt="github stats" height="170px" src="https://github-readme-stats.vercel.app/api/top-langs/?username=waka1220&theme=vue-dark&layout=compact" />
 </div>
 
 <!--
