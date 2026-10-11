@@ -1,13 +1,13 @@
 """競合（04）を、01〜03 と同じ枠で作り直す。
 
-比較表は元のスライドの内容を引き継ぎ、右にホワイトキーのカード（筆者撮影）を置く。
+比較表は元のスライドの内容を引き継ぎ、右にホワイトキーの AI 診断結果（筆者撮影）を置く。
 会話の最中にある道具は紙のカードだけ、という点を見せる。
 """
 from slide_common import *
 from pptx.oxml.ns import qn
 from lxml import etree
 
-prs, slide = start("04", "競合", "仕組みはあるが、「会話の場」には誰も介入していない", title_size=18)
+prs, slide = start("04", "競合", "AIは相手を選ぶが、会話そのものには誰も介入していない", title_size=18)
 
 
 def _border(cell, sides, color="B9C7D9", width_pt=1.0):
@@ -59,7 +59,7 @@ def _cell(cell, runs, size=11, bold=False, color=NAVY, fill=WHITE, align=PP_ALIG
 
 # ---- 比較表（元スライドの内容） ----
 COLS = [1.3, 1.2, 1.45, 1.1]
-ROWS = [0.36, 0.5, 0.5, 0.5, 0.45]
+ROWS = [0.36, 0.7, 0.5, 0.5, 0.45]
 TX, TY = 1.45, 1.8
 gt = slide.shapes.add_table(len(ROWS), len(COLS), Inches(TX), Inches(TY),
                             Inches(sum(COLS)), Inches(sum(ROWS)))
@@ -74,7 +74,7 @@ for i, h in enumerate(ROWS):
 
 data = [
     ["", "出会う前", ("会話の最中", {"color": PURPLE}), "会話の後"],
-    [("ホワイトキー", {"bold": True}), "AIマッチング", "紙のカード・\n印象メモ", "希望カード\nで集計"],
+    [("ホワイトキー", {"bold": True}), "—", "紙のカード\n途中でAIが\n次の相手を決める", "希望カード\nで集計"],
     [[("タメニー\n", {"bold": True}), ("オトコン", {"size": 10})], "—", "紙の会話メモ", "希望カード\nで集計"],
     [[("リンクバル\n", {"bold": True}), ("machicon JAPAN", {"size": 10})], "CoupLink登録", "—",
      "CoupLinkで\nいいね・連絡"],
@@ -94,23 +94,25 @@ for r, row in enumerate(data):
         _border(cell, sides)
 
 
-# ---- 右：ホワイトキーのカード（筆者撮影、1100×878） ----
+# ---- 右：ホワイトキーの AI 診断結果（筆者撮影、1100×704） ----
 IMG_X, IMG_W = 6.65, 1.9
 IMG_Y = TY
-slide.shapes.add_picture("assets/whitekey_card_photo.jpg", Inches(IMG_X), Inches(IMG_Y),
-                         Inches(IMG_W), Inches(IMG_W * 878 / 1100))
-text(IMG_X, IMG_Y + IMG_W * 878 / 1100 + 0.08, IMG_W, 0.5,
-     "ホワイトキーのカード（筆者撮影）\n印象・希望・連絡先も紙", size=8, color=PURPLE,
+slide.shapes.add_picture("assets/whitekey_ai_result.jpg", Inches(IMG_X), Inches(IMG_Y),
+                         Inches(IMG_W), Inches(IMG_W * 704 / 1100))
+text(IMG_X, IMG_Y + IMG_W * 704 / 1100 + 0.08, IMG_W, 0.5,
+     "ホワイトキーの途中AI診断\n選ぶのはAI、話すのは自分たち", size=8, color=PURPLE,
      align=PP_ALIGN.CENTER)
 
 # ---- 結論 ----
 text(1.45, 4.62, 7.1, 0.4,
-     [("空いているのは", {}), ("「会話の最中」", {"color": PURPLE}), ("。ここに TomoMeet が入る", {})],
+     [("空いているのは", {}), ("「会話そのもの」", {"color": PURPLE}), ("。ここに TomoMeet が入る", {})],
      size=16, bold=True, align=PP_ALIGN.CENTER, name="takeaway")
 
 slide.notes_slide.notes_text_frame.text = (
-    "ホワイトキーは出会う前に AI でマッチングする。会場では紙のプロフィールカードを交換し、印象を 5 段階で書くメモ用紙、"
-    "中間印象カード、最終の希望カード（第 3 希望まで）、連絡先を渡すメッセージカードもすべて紙。"
+    "ホワイトキーは会場で紙のプロフィールカードを交換し、印象を 5 段階で書くメモ用紙と中間印象カードを使う。"
+    "途中で AI 診断の紙が配られ、指名した相手とのマッチング率やライバル数、次に話す相手（AI マッチングタイム）が示される。"
+    "最後は希望カード（第 3 希望まで）で集計し、連絡先はメッセージカードで渡す。"
+    "AI が決めるのは誰と話すかで、会話そのものには関わらない。"
     "タメニーのオトコンでは、会場で紙の自己紹介カードと会話メモを配り、最後にリクエストカード（第 3 希望まで）でマッチを集計する。"
     "リンクバルは街コンサイトの machicon JAPAN とマッチングアプリの CoupLink を両方運営している。"
     "machicon JAPAN 経由で参加した街コンでは、参加した瞬間に CoupLink への登録を求められ、"
