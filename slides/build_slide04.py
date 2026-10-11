@@ -1,6 +1,6 @@
 """競合（04）を、01〜03 と同じ枠で作り直す。
 
-比較表は元のスライドの内容を引き継ぎ、右にホワイトキーの自己紹介カードを置く。
+比較表は元のスライドの内容を引き継ぎ、右にホワイトキーのカード（筆者撮影）を置く。
 会話の最中にある道具は紙のカードだけ、という点を見せる。
 """
 from slide_common import *
@@ -74,7 +74,7 @@ for i, h in enumerate(ROWS):
 
 data = [
     ["", "出会う前", ("会話の最中", {"color": PURPLE}), "会話の後"],
-    [("ホワイトキー", {"bold": True}), "AIマッチング", "紙のカード", "—"],
+    [("ホワイトキー", {"bold": True}), "AIマッチング", "紙のカード・\n印象メモ", "希望カード\nで集計"],
     [[("タメニー\n", {"bold": True}), ("オトコン", {"size": 10})], "—", "紙の会話メモ", "希望カード\nで集計"],
     [[("リンクバル\n", {"bold": True}), ("machicon JAPAN", {"size": 10})], "CoupLink登録", "—",
      "CoupLinkで\nいいね・連絡"],
@@ -94,13 +94,13 @@ for r, row in enumerate(data):
         _border(cell, sides)
 
 
-# ---- 右：ホワイトキーの自己紹介カード（553×448） ----
+# ---- 右：ホワイトキーのカード（筆者撮影、1100×878） ----
 IMG_X, IMG_W = 6.65, 1.9
 IMG_Y = TY
-slide.shapes.add_picture("assets/whitekey_profile_card.png", Inches(IMG_X), Inches(IMG_Y),
-                         Inches(IMG_W), Inches(IMG_W * 448 / 553))
-text(IMG_X, IMG_Y + IMG_W * 448 / 553 + 0.08, IMG_W, 0.5,
-     "ホワイトキーの自己紹介カード\n会話の最中はこの紙だけ", size=9, color=PURPLE,
+slide.shapes.add_picture("assets/whitekey_card_photo.jpg", Inches(IMG_X), Inches(IMG_Y),
+                         Inches(IMG_W), Inches(IMG_W * 878 / 1100))
+text(IMG_X, IMG_Y + IMG_W * 878 / 1100 + 0.08, IMG_W, 0.5,
+     "ホワイトキーのカード（筆者撮影）\n印象・希望・連絡先も紙", size=8, color=PURPLE,
      align=PP_ALIGN.CENTER)
 
 # ---- 結論 ----
@@ -109,7 +109,8 @@ text(1.45, 4.62, 7.1, 0.4,
      size=16, bold=True, align=PP_ALIGN.CENTER, name="takeaway")
 
 slide.notes_slide.notes_text_frame.text = (
-    "ホワイトキーは出会う前に AI でマッチングし、会場では紙の自己紹介カードを交換する。"
+    "ホワイトキーは出会う前に AI でマッチングする。会場では紙のプロフィールカードを交換し、印象を 5 段階で書くメモ用紙、"
+    "中間印象カード、最終の希望カード（第 3 希望まで）、連絡先を渡すメッセージカードもすべて紙。"
     "タメニーのオトコンでは、会場で紙の自己紹介カードと会話メモを配り、最後にリクエストカード（第 3 希望まで）でマッチを集計する。"
     "リンクバルは街コンサイトの machicon JAPAN とマッチングアプリの CoupLink を両方運営している。"
     "machicon JAPAN 経由で参加した街コンでは、参加した瞬間に CoupLink への登録を求められ、"
