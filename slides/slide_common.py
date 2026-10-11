@@ -15,14 +15,18 @@ WHITE = RGBColor(0xFF, 0xFF, 0xFF)
 FONT = "Noto Sans JP"
 
 shapes = None  # start() で現在のスライドに差し替える
+SHARED = None  # build_all.py が 1 つの Presentation にまとめるときに設定する
 
 
 def start(number, kicker, title, title_size=24):
     """既存デッキと同じ背景・白い枠 2 枚・番号・見出しを置いたスライドを返す。"""
     global shapes
-    prs = Presentation()
-    prs.slide_width = Inches(10)
-    prs.slide_height = Inches(5.625)
+    if SHARED is not None:
+        prs = SHARED
+    else:
+        prs = Presentation()
+        prs.slide_width = Inches(10)
+        prs.slide_height = Inches(5.625)
     slide = prs.slides.add_slide(prs.slide_layouts[6])
     shapes = slide.shapes
     bg = slide.background.fill
