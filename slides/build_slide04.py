@@ -58,9 +58,9 @@ def _cell(cell, runs, size=11, bold=False, color=NAVY, fill=WHITE, align=PP_ALIG
 
 
 # ---- 比較表（元スライドの内容） ----
-COLS = [1.15, 1.15, 1.45, 0.95]
-ROWS = [0.4, 0.62, 0.62, 0.5]
-TX, TY = 1.45, 1.85
+COLS = [1.3, 1.2, 1.45, 1.1]
+ROWS = [0.36, 0.5, 0.5, 0.5, 0.45]
+TX, TY = 1.45, 1.8
 gt = slide.shapes.add_table(len(ROWS), len(COLS), Inches(TX), Inches(TY),
                             Inches(sum(COLS)), Inches(sum(ROWS)))
 gt.name = "compare-table"
@@ -75,32 +75,32 @@ for i, h in enumerate(ROWS):
 data = [
     ["", "出会う前", ("会話の最中", {"color": PURPLE}), "会話の後"],
     [("ホワイトキー", {"bold": True}), "AIマッチング", "紙のカード", "—"],
-    [[("タメニー\n", {"bold": True}), ("オトコン提携", {"size": 10})], "アプリ登録", "—", "マッチ集計"],
+    [[("タメニー\n", {"bold": True}), ("オトコン", {"size": 10})], "—", "—", "マッチ集計"],
+    [[("リンクバル\n", {"bold": True}), ("machicon JAPAN", {"size": 10})], "CoupLink登録", "—",
+     "CoupLinkで\nいいね・連絡"],
     [("この提案", {"bold": True, "color": PURPLE}), "", ("インタラクション", {"bold": True, "color": WHITE}), "振り返り"],
 ]
 for r, row in enumerate(data):
     for c, val in enumerate(row):
         runs = val if isinstance(val, list) else ([val] if isinstance(val, tuple) else val)
         cell = tbl.cell(r, c)
-        highlight = (r == 3 and c == 2)
+        highlight = (r == 4 and c == 2)
         _cell(cell, runs, bold=(r == 0), fill=PURPLE if highlight else WHITE,
               align=PP_ALIGN.LEFT if c == 0 else PP_ALIGN.CENTER)
-        sides = {"a:lnB": "0A0147" if r in (2, 3) else "B9C7D9"}
+        sides = {"a:lnB": "0A0147" if r in (3, 4) else "B9C7D9"}
         if c == 2 and r > 0:  # 「会話の最中」の列を左右の線で囲む
             sides["a:lnL"] = "4F469D"
             sides["a:lnR"] = "4F469D"
         _border(cell, sides)
 
-text(TX, TY + sum(ROWS) + 0.12, sum(COLS), 0.25,
-     "2件目の街コン：参加した瞬間にマッチングアプリへ登録", size=10, color=PURPLE)
 
 # ---- 右：ホワイトキーの自己紹介カード（553×448） ----
-IMG_X, IMG_W = 6.4, 2.1
+IMG_X, IMG_W = 6.65, 1.9
 IMG_Y = TY
 slide.shapes.add_picture("assets/whitekey_profile_card.png", Inches(IMG_X), Inches(IMG_Y),
                          Inches(IMG_W), Inches(IMG_W * 448 / 553))
 text(IMG_X, IMG_Y + IMG_W * 448 / 553 + 0.08, IMG_W, 0.5,
-     "ホワイトキーの自己紹介カード\n会話の最中はこの紙だけ", size=10, color=PURPLE,
+     "ホワイトキーの自己紹介カード\n会話の最中はこの紙だけ", size=9, color=PURPLE,
      align=PP_ALIGN.CENTER)
 
 # ---- 結論 ----
@@ -110,9 +110,11 @@ text(1.45, 4.62, 7.1, 0.4,
 
 slide.notes_slide.notes_text_frame.text = (
     "ホワイトキーは出会う前に AI でマッチングし、会場では紙の自己紹介カードを交換する。"
-    "タメニー（オトコン提携）は出会う前にアプリ登録、会話の後にマッチを集計する。"
-    "2 件目に参加した街コンでは、参加した瞬間にマッチングアプリへの登録を求められた。"
-    "どちらも会話の最中に使える道具は紙のカードくらいで、会話そのものには誰も介入していない。"
+    "タメニーのオトコンは、会話の後にマッチを集計する。"
+    "リンクバルは街コンサイトの machicon JAPAN とマッチングアプリの CoupLink を両方運営している。"
+    "machicon JAPAN 経由で参加した街コンでは、参加した瞬間に CoupLink への登録を求められ、"
+    "会った相手とはアプリでいいねやメッセージを送る。"
+    "どのサービスも、会話の最中に使える道具は紙のカードくらいで、会話そのものには誰も介入していない。"
     "TomoMeet はここに、インタラクションで入る。"
 )
 
