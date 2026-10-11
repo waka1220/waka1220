@@ -8,12 +8,16 @@ from slide_common import *
 prs, slide = start("07", "現地調査 オトコン（男性7名・女性4名）", "全員と盛り上がったのに、自分はマッチしなかった",
                    title_size=20)
 
-# 左：会場写真（1200×800）
-IMG_X, IMG_Y, IMG_W = 1.45, 1.8, 3.1
-IMG_H = IMG_W * 800 / 1200
-slide.shapes.add_picture("assets/otocon_venue.jpg", Inches(IMG_X), Inches(IMG_Y), Inches(IMG_W), Inches(IMG_H))
-text(IMG_X, IMG_Y + IMG_H + 0.08, IMG_W, 0.22, "オトコン会場（筆者撮影）", size=9, color=PURPLE)
-text(IMG_X, IMG_Y + IMG_H + 0.32, IMG_W, 0.22, "半個室・女性固定で男性が回る・1人8分", size=11)
+# 左：会場写真 2 枚（どちらも 4:3）
+PH_Y, PH_W, PH_GAP = 1.8, 1.5, 0.1
+PH_H = PH_W * 3 / 4
+for i, (path, cap) in enumerate([("assets/otocon_venue_43.jpg", "今回の会場（7:4）"),
+                                  ("assets/otocon_large_venue.jpg", "40人規模の会場（20:20）")]):
+    x = 1.45 + i * (PH_W + PH_GAP)
+    slide.shapes.add_picture(path, Inches(x), Inches(PH_Y), Inches(PH_W), Inches(PH_H))
+    text(x, PH_Y + PH_H + 0.06, PH_W, 0.2, cap, size=8, color=PURPLE)
+text(1.45, 3.35, 3.1, 0.22, "半個室・女性固定で男性が回る・1人8分", size=11)
+text(1.45, 3.68, 3.1, 0.5, "40人規模なら、話す相手は最大20人。\n覚えておくのはさらに難しい", size=10, color=PURPLE)
 
 # 右：数字 2 つ
 RX0 = 4.95
@@ -51,6 +55,7 @@ slide.notes_slide.notes_text_frame.text = (
     "半個室で女性は席に固定、男性が回る形式で、1 人 8 分。"
     "会場全体では 2 組がマッチしたが（女性 4 名なので最大 4 組）、私は全員と盛り上がったのに 0 件だった。"
     "会場には相性と一言メモを書ける「会話MEMO」の用紙があったが、8 分ごとに相手が替わるので書く余裕がなく、誰と何を話したか忘れてしまう。"
+    "同じオトコンには 40 人規模（男女 20 人ずつ）の会場もあり、そこでは話す相手が最大 20 人になる。"
     "これは 06 の理由 3、話すうちに印象が上書きされることを裏づけている。"
     "参加者として一番欲しかったのは、会話の振り返り（AI 議事録）だった。"
 )
