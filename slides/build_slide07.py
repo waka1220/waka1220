@@ -33,10 +33,13 @@ def stat(x, filled, top, num, unit, bottom, name):
 stat(RX0 + 0.1, False, "会場全体", "2", "組", "マッチ成立", "stat-venue")
 stat(RX0 + 1.75, True, "私", "0", "件", "全員と盛り上がった", "stat-me")
 
-# 右：気づき
-text(RX0, 3.38, 3.6, 0.22, "気づき", size=10, color=PURPLE, bold=True)
-text(RX0, 3.6, 3.6, 0.55, "メモする余裕がなく、\n何を話したか忘れる", size=15, bold=True, line_spacing=1.05)
-text(RX0, 4.2, 3.6, 0.22, "06 の理由3（印象の上書き）を裏づける", size=9, color=PURPLE)
+# 右：気づき（オトコンの会話MEMO、900×874）
+MEMO_W = 1.0
+slide.shapes.add_picture("assets/otocon_memo.jpg", Inches(RX0), Inches(3.38), Inches(MEMO_W), Inches(MEMO_W * 874 / 900))
+TX0, TW = RX0 + 1.15, 2.45
+text(TX0, 3.36, TW, 0.22, "気づき", size=10, color=PURPLE, bold=True)
+text(TX0, 3.58, TW, 0.5, "会話MEMOはあるが、\n書く余裕がない", size=14, bold=True, line_spacing=1.05)
+text(TX0, 4.08, TW, 0.3, "何を話したか忘れる。06 の理由3（印象の上書き）を裏づける", size=8, color=PURPLE)
 
 # ---- 結論 ----
 text(1.45, 4.62, 7.1, 0.4,
@@ -47,7 +50,7 @@ slide.notes_slide.notes_text_frame.text = (
     "実際にオトコンに参加した。男性 7 名、女性 4 名。"
     "半個室で女性は席に固定、男性が回る形式で、1 人 8 分。"
     "会場全体では 2 組がマッチしたが（女性 4 名なので最大 4 組）、私は全員と盛り上がったのに 0 件だった。"
-    "メモ用紙はあったが、書く余裕がなく、誰と何を話したか忘れてしまう。"
+    "会場には相性と一言メモを書ける「会話MEMO」の用紙があったが、8 分ごとに相手が替わるので書く余裕がなく、誰と何を話したか忘れてしまう。"
     "これは 06 の理由 3、話すうちに印象が上書きされることを裏づけている。"
     "参加者として一番欲しかったのは、会話の振り返り（AI 議事録）だった。"
 )
